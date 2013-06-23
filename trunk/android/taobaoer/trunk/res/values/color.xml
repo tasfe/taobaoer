@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  		<!-- common begin -->
+	    <color name="page_background_color">#E6E6E6</color>
+	    <color name="text_gray">#808080</color>
+	   	<color name="dialog_shape_solid_color">#333333</color>
+	  	<color name="prompt_dialog_text_color">#aaaaaa</color>
+</resources>
