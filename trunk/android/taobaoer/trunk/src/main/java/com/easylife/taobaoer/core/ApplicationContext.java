@@ -11,7 +11,7 @@ public class ApplicationContext extends Application {
 
 	// public final String baseUrl = "http://" + DOMAIN + ":8080/easylife/";
 
-	public final String baseUrl = "http://easylife.51juzhai.com/";
+	public final String baseUrl = "http://apiserver.meilishuo.com/";
 
 	@Override
 	public void onCreate() {
