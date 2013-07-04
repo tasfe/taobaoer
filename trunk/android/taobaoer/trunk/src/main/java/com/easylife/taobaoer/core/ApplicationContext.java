@@ -6,12 +6,15 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 
+import com.easylife.taobaoer.core.model.Token;
+
 public class ApplicationContext extends Application {
 	public final String DOMAIN = "10.10.10.100";
 
 	// public final String baseUrl = "http://" + DOMAIN + ":8080/easylife/";
 
 	public final String baseUrl = "http://apiserver.meilishuo.com/";
+	private Token token;
 
 	@Override
 	public void onCreate() {
@@ -35,6 +38,14 @@ public class ApplicationContext extends Application {
 
 	public String getBaseUrl() {
 		return baseUrl;
+	}
+
+	public Token getToken() {
+		return token;
+	}
+
+	public void setToken(Token token) {
+		this.token = token;
 	}
 
 }

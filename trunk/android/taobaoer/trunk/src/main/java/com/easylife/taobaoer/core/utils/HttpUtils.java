@@ -34,6 +34,7 @@ import android.net.ConnectivityManager;
 import android.util.Log;
 
 import com.easylife.taobaoer.core.ApplicationContext;
+import com.easylife.taobaoer.core.converter.MeilishuoJacksonHttpMessageConverter;
 
 public class HttpUtils {
 	private static int CONNECT_TIMEOUT = 20000;
@@ -82,7 +83,7 @@ public class HttpUtils {
 			throw new RestClientException("no network");
 		}
 		restTemplate.getMessageConverters().add(
-				new MappingJacksonHttpMessageConverter());
+				new MeilishuoJacksonHttpMessageConverter());
 		ApplicationContext config = (ApplicationContext) context
 				.getApplicationContext();
 		ResponseEntity<T> responseEntity = restTemplate.exchange(
