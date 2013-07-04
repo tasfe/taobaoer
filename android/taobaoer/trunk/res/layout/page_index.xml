@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/first_sell_bg"
+    >
+	<com.easylife.taobaoer.core.widget.list.JuzhaiRefreshGirdView 
+	    	  android:layout_width="wrap_content"
+	    	  android:layout_height="wrap_content"
+	    	  android:numColumns="3"
+	    	  android:id="@+id/grid_view" 
+	    	  android:listSelector="#00000000"
+	    	  android:verticalSpacing="5dp"
+			  android:horizontalSpacing="3dp"
+	    />
+</RelativeLayout>
