@@ -70,6 +70,20 @@ public class ImageUtils {
 
 	}
 
+	public static Bitmap zoomWidthCutMiddlePx(Bitmap scrBitmap, int tagerWidth,
+			int tagerHeight, Context context) {
+		Bitmap result = zoomBitmap(scrBitmap, tagerWidth, 0, context);
+		if (result.getHeight() > tagerHeight) {
+			int y = (result.getHeight() / 2) - (tagerHeight / 2);
+			if (y + tagerHeight >= result.getHeight()) {
+				y = 0;
+			}
+			return Bitmap.createBitmap(result, 0, y, tagerWidth, tagerHeight);
+		}
+		return result;
+
+	}
+
 	/**
 	 * 按宽度等比例压缩
 	 * 
@@ -84,6 +98,11 @@ public class ImageUtils {
 			int tagerWidth, int tagerHeight, Context context) {
 		tagerWidth = UIUtil.dip2px(context, tagerWidth);
 		tagerHeight = UIUtil.dip2px(context, tagerHeight);
+		return zoomBitmap(scrBitmap, tagerWidth, 0, context);
+	}
+
+	public static Bitmap zoomWidthBitmapNotCutPx(Bitmap scrBitmap,
+			int tagerWidth, int tagerHeight, Context context) {
 		return zoomBitmap(scrBitmap, tagerWidth, 0, context);
 	}
 
@@ -187,5 +206,30 @@ public class ImageUtils {
 			return Bitmap.createBitmap(result, 0, y, tagerWidth, tagerHeight);
 		}
 		return result;
+	}
+
+	/**
+	 * 按正方形截取中间部分
+	 * 
+	 * @param scrBitmap
+	 * @param tagerWidth
+	 * @param tagerHeight
+	 * @param context
+	 * @return
+	 */
+	public static Bitmap zoomCutMiddle(Bitmap scrBitmap, int tagerWidth,
+			int tagerHeight, Context context) {
+		int width = scrBitmap.getWidth();
+		int height = scrBitmap.getHeight();
+		Bitmap result = null;
+		if (width > height) {
+			int x = (width / 2) - (height / 2);
+			result = Bitmap.createBitmap(scrBitmap, x, 0, height, height);
+		} else {
+			int y = (height / 2) - (width / 2);
+			result = Bitmap.createBitmap(scrBitmap, 0, y, width, width);
+		}
+		return zoomBitmap(result, UIUtil.dip2px(context, tagerWidth),
+				UIUtil.dip2px(context, tagerHeight), context);
 	}
 }

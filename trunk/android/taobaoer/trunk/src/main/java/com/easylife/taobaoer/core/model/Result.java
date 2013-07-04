@@ -2,6 +2,8 @@ package com.easylife.taobaoer.core.model;
 
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
+import com.easylife.taobaoer.product.model.Product;
+
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Result<T> {
 	private T result;
@@ -39,6 +41,9 @@ public class Result<T> {
 
 	public void setErrorInfo(String errorInfo) {
 		this.errorInfo = errorInfo;
+	}
+
+	public static class ProductListResult extends Result<PageList<Product>> {
 	}
 
 }

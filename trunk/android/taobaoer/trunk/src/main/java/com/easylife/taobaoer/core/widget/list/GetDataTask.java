@@ -18,11 +18,11 @@ import com.easylife.taobaoer.core.widget.list.pullrefresh.PullToRefreshBase.Mode
 public abstract class GetDataTask<T extends Result<? extends PageList<E>>, E extends Entity>
 		extends AsyncTask<Object, Integer, T> {
 
-	protected JuzhaiRefreshListView refreshListView;
+	protected JuzhaiRefreshGirdView refreshListView;
 
 	protected Context context;
 
-	public GetDataTask(Context context, JuzhaiRefreshListView refreshListView) {
+	public GetDataTask(Context context, JuzhaiRefreshGirdView refreshListView) {
 		this.context = context;
 		this.refreshListView = refreshListView;
 	}
