@@ -15,8 +15,8 @@ import android.graphics.BitmapFactory;
 import android.os.Environment;
 import android.util.Log;
 
+import com.easylife.taobaoer.BuildConfig;
 import com.jakewharton.DiskLruCache;
-import com.juzhai.pictorial.BuildConfig;
 
 public class DiskLruImageCache {
 
