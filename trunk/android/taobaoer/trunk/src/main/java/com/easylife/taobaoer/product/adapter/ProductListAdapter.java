@@ -41,8 +41,8 @@ public class ProductListAdapter extends PageAdapter<Product> {
 		TextView itemContent = holder.itemContent;
 		if (StringUtils.hasText(product.getJ_pic_url())) {
 			ImageViewLoader nid = ImageViewLoader.getInstance(mContext);
-			nid.fetchImage(product.getJ_pic_url(), 0, itemImage,
-					new ImageLoaderCallback() {
+			nid.fetchImage(product.getJ_pic_url(), R.drawable.loading_small,
+					itemImage, new ImageLoaderCallback() {
 						@Override
 						public void imageLoaderFinish(Bitmap bitmap) {
 							if (bitmap != null) {

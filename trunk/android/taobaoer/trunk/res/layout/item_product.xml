@@ -4,14 +4,14 @@
     android:layout_height="wrap_content"
     >
 	<ImageView android:layout_width="fill_parent"
-	    	   android:layout_height="wrap_content"
+	    	   android:layout_height="fill_parent"
 	    	   android:id="@+id/item_image"
 	    	   android:contentDescription="@null"
 	    	   />
 	<TextView android:layout_width="wrap_content"
 	    	  android:layout_height="wrap_content"
 	    	  android:id="@+id/item_content"
-	    	  android:background="#32000000"
+	    	  android:background="#32444444"
 	    	  android:textColor="@color/white"
 	    	  android:textSize="12sp"
 	    	  android:layout_alignParentBottom="true"

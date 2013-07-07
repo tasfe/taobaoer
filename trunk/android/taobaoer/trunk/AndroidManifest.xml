@@ -20,8 +20,7 @@
     <activity android:name=".main.activity.MainTabActivity" android:screenOrientation="portrait"/>
     <activity android:name=".home.activity.IndexActivity" android:screenOrientation="portrait"/>
     <activity android:name=".home.activity.CategoryActivity" android:screenOrientation="portrait"/>
-    <activity android:name=".home.activity.TopicActivity" android:screenOrientation="portrait"/>
-    <activity android:name=".home.activity.SettingActivity" android:screenOrientation="portrait"/>
+    <activity android:name=".home.activity.FavActivity" android:screenOrientation="portrait"/>
   </application>
 
 </manifest>
