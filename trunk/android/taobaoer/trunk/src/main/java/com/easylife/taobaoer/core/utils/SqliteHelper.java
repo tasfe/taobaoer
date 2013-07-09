@@ -22,7 +22,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
 		// TODO Auto-generated constructor stub
 	}
 	/**
-	 * ������
+	 * 创建表
 	 */
 	@Override
 	public void onCreate(SQLiteDatabase db) {
