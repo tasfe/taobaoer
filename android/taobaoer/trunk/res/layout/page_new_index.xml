@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/first_sell_bg"
+    >
+    <com.easylife.taobaoer.core.widget.waterfall.MultiColumnPullToRefreshListView
+        xmlns:pla="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        pla:plaColumnNumber="2"
+        pla:plaLandscapeColumnNumber="3" />
+</RelativeLayout>
