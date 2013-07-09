@@ -6,4 +6,5 @@
 	   	<color name="dialog_shape_solid_color">#333333</color>
 	  	<color name="prompt_dialog_text_color">#aaaaaa</color>
 	  	<color name="white">#FFFFFF</color>
+	  	<color name="black">#000000</color>
 </resources>

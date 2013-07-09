@@ -16,6 +16,7 @@ public class Product extends Entity {
 	private String q_pic_url;
 	private int pic_width;
 	private int pic_height;
+	private String remark;
 
 	public long getTwitter_id() {
 		return twitter_id;
@@ -79,6 +80,14 @@ public class Product extends Entity {
 
 	public void setPic_height(int pic_height) {
 		this.pic_height = pic_height;
+	}
+
+	public String getRemark() {
+		return remark;
+	}
+
+	public void setRemark(String remark) {
+		this.remark = remark;
 	}
 
 	@Override

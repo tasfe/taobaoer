@@ -12,7 +12,7 @@ import com.easylife.taobaoer.core.widget.tab.TabBar;
 import com.easylife.taobaoer.core.widget.tab.TabBarItem;
 import com.easylife.taobaoer.home.activity.CategoryActivity;
 import com.easylife.taobaoer.home.activity.FavActivity;
-import com.easylife.taobaoer.home.activity.IndexActivity;
+import com.easylife.taobaoer.home.activity.NewIndexActivity;
 
 public class MainTabActivity extends ActivityGroup {
 
@@ -32,7 +32,7 @@ public class MainTabActivity extends ActivityGroup {
 				MainTabActivity.this);
 		tabBar.addTabBarItem(new TabBarItem<Intent>(R.drawable.home_link,
 				R.drawable.home_hover, R.string.tabitem_index, new Intent(this,
-						IndexActivity.class)));
+						NewIndexActivity.class)));
 		tabBar.addTabBarItem(new TabBarItem<Intent>(R.drawable.all_link,
 				R.drawable.all_hover, R.string.tabitem_category, new Intent(
 						this, CategoryActivity.class)));
