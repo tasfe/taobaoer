@@ -106,6 +106,11 @@ public class ImageUtils {
 		return zoomBitmap(scrBitmap, tagerWidth, 0, context);
 	}
 
+	public static Bitmap zoomBitmapNotCutPx(Bitmap scrBitmap, int tagerWidth,
+			int tagerHeight, Context context) {
+		return zoomBitmap(scrBitmap, tagerWidth, tagerHeight, context);
+	}
+
 	private static Bitmap zoomBitmap(Bitmap scrBitmap, int tagerWidth,
 			int tagerHeight, Context context) {
 		int width = scrBitmap.getWidth();
