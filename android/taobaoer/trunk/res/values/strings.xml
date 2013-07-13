@@ -7,4 +7,9 @@
     <string name="tabitem_topic">专题</string>
     <string name="tabitem_mine">我</string>
     <string name="no_network">您的网络状况不太好请稍后重试</string>
+    
+    <string name="sending">正在请求</string>
+    <string name="please_wait">请稍等</string>
+    <string name="success">操作成功</string>
+    
 </resources>
