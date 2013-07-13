@@ -8,10 +8,11 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 
 import com.easylife.taobaoer.R;
+import com.easylife.taobaoer.category.activity.CategoryActivity;
 import com.easylife.taobaoer.core.widget.tab.TabBar;
 import com.easylife.taobaoer.core.widget.tab.TabBarItem;
-import com.easylife.taobaoer.home.activity.CategoryActivity;
 import com.easylife.taobaoer.home.activity.FavActivity;
+import com.easylife.taobaoer.home.activity.IndexActivity;
 import com.easylife.taobaoer.home.activity.NewIndexActivity;
 
 public class MainTabActivity extends ActivityGroup {
