@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/user_home_bottom_layout"
+        android:background="@color/page_background_color"
+        android:scrollbars="vertical" >
+
+        <LinearLayout
+            android:id="@+id/detail_info"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:id="@+id/pictures"
+	            android:layout_width="fill_parent"
+	            android:layout_height="600dp"
+	            >
+	            
+                <ImageView
+                    android:id="@+id/goods_pic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/loading_big"
+                    android:contentDescription="@null" />
+				
+                <ImageButton
+                    android:id="@+id/imageButton1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="26dp"
+                    android:layout_marginBottom="20dp"
+                    android:contentDescription="@string/goods_share"
+                    android:src="@drawable/share_selector_button" />
+                
+                <TextView
+                    android:id="@+id/goods_price"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginRight="26dp"
+                    android:layout_marginBottom="20dp"
+                    android:alpha="0.4"
+                    android:background="@color/price_bg_color"
+                    android:textColor="@color/text_background_color"
+                    android:textSize="28sp"
+                    android:padding="5dp"
+                    android:text="@string/goods_price" />
+                
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/goods_info"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@color/text_background_color"
+                android:text="@string/goods_description"
+                android:textColor="@color/text_color"
+                android:padding="5dp"
+                android:textSize="25sp" />
+        </LinearLayout>
+    </ScrollView>
+
+    <RelativeLayout
+        android:id="@+id/user_home_bottom_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:gravity="center"  >
+
+        <Button
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="28dp"
+            android:background="@drawable/back_selector_button"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/shopping"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+             android:layout_centerVertical="true"
+            android:background="@drawable/shopping_selector_button"
+            android:text="@string/detail_shopping"
+            android:textColor="@color/white"
+            android:textSize="28sp"
+            android:gravity="center" />
+
+        <Button
+            android:id="@+id/favourite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="28dp"
+            android:background="@drawable/favourite_selector_button"
+            android:textColor="@color/white" />
+    </RelativeLayout>
+
+</RelativeLayout>
