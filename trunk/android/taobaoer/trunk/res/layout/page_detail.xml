@@ -19,7 +19,7 @@
             <RelativeLayout
                 android:id="@+id/pictures"
 	            android:layout_width="fill_parent"
-	            android:layout_height="600dp"
+	            android:layout_height="490dp"
 	            >
 	            
                 <ImageView
@@ -41,7 +41,7 @@
                 
                 <TextView
                     android:id="@+id/goods_price"
-                    android:layout_width="80dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentBottom="true"
@@ -50,8 +50,8 @@
                     android:alpha="0.4"
                     android:background="@color/price_bg_color"
                     android:textColor="@color/text_background_color"
-                    android:textSize="28sp"
-                    android:padding="5dp"
+                    android:textSize="26sp"
+                    android:padding="2dp"
                     android:text="@string/goods_price" />
                 
             </RelativeLayout>
@@ -64,7 +64,7 @@
                 android:text="@string/goods_description"
                 android:textColor="@color/text_color"
                 android:padding="5dp"
-                android:textSize="25sp" />
+                android:textSize="22sp" />
         </LinearLayout>
     </ScrollView>
 
