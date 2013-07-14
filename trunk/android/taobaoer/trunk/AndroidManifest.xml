@@ -21,7 +21,8 @@
     <activity android:name=".home.activity.NewIndexActivity" android:screenOrientation="portrait"/>
     <activity android:name=".category.activity.CategoryActivity" android:screenOrientation="portrait"/>
     <activity android:name=".home.activity.FavActivity" android:screenOrientation="portrait"/>
-     <activity android:name=".category.activity.CategoryChildrenActivity" android:screenOrientation="portrait"/>
+    <activity android:name=".category.activity.CategoryChildrenActivity" android:screenOrientation="portrait"/>
+    <activity android:name=".detail.activity.DetailActivity" android:screenOrientation="portrait"/>
   </application>
 
 </manifest>
