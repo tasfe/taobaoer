@@ -8,4 +8,8 @@
 	  	<color name="white">#FFFFFF</color>
 	  	<color name="black">#000000</color>
 	  	<color name="cat_black">#50000000</color>
+	  	<color name="text_background_color">#eeeeee</color>
+	  	<color name="text_color">#222222</color>
+	  	<color name="price_bg_color">#444444</color>
+	  	
 </resources>
