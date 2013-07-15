@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.util.StringUtils;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.util.DisplayMetrics;
 import android.view.Display;
@@ -34,12 +35,12 @@ public class GoodsDetailService implements IGoodsDetailService {
 	private final String GOODS_DETAIL_URI = "1.1/twitter/single";
 	private final String CLIENT_ID = "10009";
 	@Override
-	public GoodsDetail getGoodsDetail(Context context) {
+	public GoodsDetail getGoodsDetail(Context context,String twitter_goods_id,String twitter_id) {
 		ApplicationContext config = (ApplicationContext) context
 				.getApplicationContext();
 		Map<String, Object> values = new HashMap<String, Object>();
-		values.put("twitter_id", "1413191067");
-		values.put("goods_id", "53310035");
+		values.put("twitter_id", twitter_id);
+		values.put("goods_id", twitter_goods_id);
 		values.put("access_token", config.getToken().getAccess_token());
 		values.put("imei", TaobaoUtils.getDeviceToken(context));
 		values.put("mac", TaobaoUtils.getMac(context));

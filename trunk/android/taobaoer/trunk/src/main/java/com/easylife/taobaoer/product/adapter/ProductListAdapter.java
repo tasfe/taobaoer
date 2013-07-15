@@ -1,5 +1,7 @@
 package com.easylife.taobaoer.product.adapter;
 
+import java.util.List;
+
 import org.springframework.util.StringUtils;
 
 import android.content.Context;
@@ -27,7 +29,11 @@ public class ProductListAdapter extends PageAdapter<Product> {
 	public ProductListAdapter(Context mContext) {
 		super(mContext);
 	}
-
+	
+	public List<Product> getProductList(){
+		return data.getDatas();
+	}
+	
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		final Product product = data.getDatas().get(position);
