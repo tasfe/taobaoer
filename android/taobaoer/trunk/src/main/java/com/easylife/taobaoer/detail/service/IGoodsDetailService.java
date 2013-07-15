@@ -14,7 +14,7 @@ public interface IGoodsDetailService {
 	 * 
 	 * @return
 	 */
-	public GoodsDetail getGoodsDetail(Context context);
+	public GoodsDetail getGoodsDetail(Context context,String twitter_goods_id,String goods_id);
 	
 	/**
 	 * 显示商品大图

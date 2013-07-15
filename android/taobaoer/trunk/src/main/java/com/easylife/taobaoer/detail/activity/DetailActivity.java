@@ -23,6 +23,9 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Display;
 import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -31,12 +34,19 @@ public class DetailActivity extends ActivityGroup {
 	private TextView priceView;
 	private ImageView picView;
 	private TextView remarkView;
+	private Button backButton;
 	GoodsDetail goodsDetail;
 	@SuppressWarnings("deprecation")
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.page_detail);
-		getWindowManager();
+		backButton = (Button) findViewById(R.id.back);
+		backButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				finish();
+			}
+		});
 		new ProgressTask(DetailActivity.this, new TaskCallback(){
 			@Override
 			public void successCallback() {
@@ -53,7 +63,11 @@ public class DetailActivity extends ActivityGroup {
 
 			@Override 
 			public String doInBackground() {
-				goodsDetail = goodsDetailService.getGoodsDetail(DetailActivity.this);
+				Intent intent = DetailActivity.this.getIntent();
+				String twitter_goods_id = intent.getStringExtra("twitter_goods_id");
+				String twitter_id = intent.getStringExtra("twitter_id");
+				System.out.println(twitter_goods_id+"======="+twitter_id);
+				goodsDetail = goodsDetailService.getGoodsDetail(DetailActivity.this,twitter_goods_id,twitter_id);
 				return null;
 			}
 		}, false).execute();
