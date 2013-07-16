@@ -64,7 +64,7 @@
                 android:text="@string/goods_description"
                 android:textColor="@color/text_color"
                 android:padding="5dp"
-                android:textSize="22sp" />
+                android:textSize="16sp" />
         </LinearLayout>
     </ScrollView>
 
@@ -94,7 +94,7 @@
             android:background="@drawable/shopping_selector_button"
             android:text="@string/detail_shopping"
             android:textColor="@color/white"
-            android:textSize="28sp"
+            android:textSize="20sp"
             android:gravity="center" />
 
         <Button
