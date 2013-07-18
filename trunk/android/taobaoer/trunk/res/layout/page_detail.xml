@@ -64,7 +64,7 @@
                 android:text="@string/goods_description"
                 android:textColor="@color/text_color"
                 android:padding="5dp"
-                android:textSize="16sp" />
+                android:textSize="26sp" />
         </LinearLayout>
     </ScrollView>
 
