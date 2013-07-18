@@ -28,11 +28,13 @@ import com.easylife.taobaoer.core.utils.UIUtil;
 import com.easylife.taobaoer.core.widget.image.ImageLoaderCallback;
 import com.easylife.taobaoer.core.widget.image.ImageViewLoader;
 import com.easylife.taobaoer.detail.model.GoodsDetail;
+import com.easylife.taobaoer.detail.model.GoodsMoreImages;
 import com.easylife.taobaoer.detail.service.IGoodsDetailService;
 
 
 public class GoodsDetailService implements IGoodsDetailService {
 	private final String GOODS_DETAIL_URI = "1.1/twitter/single";
+	private final String GOODS_IMAGES_URI = "1.0/twitter/images";
 	private final String CLIENT_ID = "10009";
 	@Override
 	public GoodsDetail getGoodsDetail(Context context,String twitter_goods_id,String twitter_id) {
@@ -77,5 +79,28 @@ public class GoodsDetailService implements IGoodsDetailService {
 		} else {
 			imageView.setVisibility(View.GONE);
 		}
+	}
+
+	@Override
+	public GoodsMoreImages showGoodsMorePictures(Context context, String twitter_goods_id,
+			String twitter_id) {
+		ApplicationContext config = (ApplicationContext) context
+				.getApplicationContext();
+		Map<String, Object> values = new HashMap<String, Object>();
+		values.put("twitter_id", twitter_id);
+		values.put("goods_id", twitter_goods_id);
+		values.put("access_token", config.getToken().getAccess_token());
+		values.put("imei", TaobaoUtils.getDeviceToken(context));
+		values.put("mac", TaobaoUtils.getMac(context));
+		values.put("qudaoid", CLIENT_ID);
+		ResponseEntity<GoodsMoreImages> responseEntity = null;
+		try {
+			responseEntity = HttpUtils.get(context, GOODS_IMAGES_URI, values,
+					GoodsMoreImages.class);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+		return responseEntity.getBody();
 	}
 }

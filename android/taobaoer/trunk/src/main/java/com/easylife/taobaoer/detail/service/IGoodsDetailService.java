@@ -6,6 +6,7 @@ import android.content.Context;
 import android.widget.ImageView;
 
 import com.easylife.taobaoer.detail.model.GoodsDetail;
+import com.easylife.taobaoer.detail.model.GoodsMoreImages;
 import com.easylife.taobaoer.product.model.ProductList;
 
 public interface IGoodsDetailService {
@@ -14,7 +15,7 @@ public interface IGoodsDetailService {
 	 * 
 	 * @return
 	 */
-	public GoodsDetail getGoodsDetail(Context context,String twitter_goods_id,String goods_id);
+	public GoodsDetail getGoodsDetail(Context context,String twitter_goods_id,String twitter_id);
 	
 	/**
 	 * 显示商品大图
@@ -24,4 +25,6 @@ public interface IGoodsDetailService {
 	 */
 	public void showBigPostImage(final Context context, String pic_url,
 			final ImageView imageView,final int screenWidth);
+	
+	public GoodsMoreImages showGoodsMorePictures(Context context,String twitter_goods_id,String twitter_id);
 }

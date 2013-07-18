@@ -39,7 +39,7 @@ public class NewIndexActivity extends Activity {
 					int position, long id) {
 				// TODO Auto-generated method stub
 				List<Product> productList = mAdapter.getProductList();
-				Product product =  productList.get(position);
+				Product product =  productList.get(position-1);
 				Intent intent = new Intent();
 				intent.putExtra("twitter_goods_id", String.valueOf(product.getTwitter_goods_id()));
 				intent.putExtra("twitter_id", String.valueOf(product.getTwitter_id()));
