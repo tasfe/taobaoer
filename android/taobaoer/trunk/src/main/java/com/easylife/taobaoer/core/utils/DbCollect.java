@@ -15,7 +15,7 @@ import android.database.sqlite.SQLiteDatabase;
 public class DbCollect {
 	private SQLiteDatabase db=null;
 	private Cursor cursor=null;
-	public static final String TB_NAME= "Product";
+	public static final String TB_NAME= "product";
 	SqliteHelper sh;
 	/**
 	 * 构造方法设置连接对象
@@ -23,8 +23,10 @@ public class DbCollect {
 	 */
 	public DbCollect(Context context){
 		sh=new SqliteHelper(context, TB_NAME, null, 2);
+	}
+	
+	public void open(){
 		db=sh.getWritableDatabase();
-		
 	}
 	/**
 	 * 关闭连接对象
@@ -49,8 +51,9 @@ public class DbCollect {
          values.put("q_pic_url", product.getQ_pic_url());
          values.put("pic_width", product.getPic_width());
          values.put("pic_height", product.getPic_height());
-         
+         open();
          Long uid=db.insert(TB_NAME,null, values);
+         //"twitter_id,title,twitter_goods_id,pic_url,j_pic_url,q_pic_url,pic_width,pic_height"
          this.close();
          return uid;
 	}
@@ -61,6 +64,7 @@ public class DbCollect {
 	 */
 	public List<Product> getCollectProduct(Long twitter_id){
 		List<Product> productList=new ArrayList<Product>();
+		open();
 		cursor=db.query(TB_NAME, null, "twitter_id=?", new String[]{twitter_id+""}, null, null, null);
 		while(cursor.moveToNext()){
 			Product product=new Product();
@@ -74,6 +78,7 @@ public class DbCollect {
 			product.setPic_height(cursor.getInt(7));
 			productList.add(product);
 		}
+		 this.close();
 		return productList;
 	}
 	/**
@@ -82,6 +87,7 @@ public class DbCollect {
 	 */
 	public List<Product> getAllCollectProduct(){
 		List<Product> allProductList=new ArrayList<Product>();
+		open();
 		cursor=db.query(TB_NAME, null, null, null, null, null, null);
 		while(cursor.moveToNext()){
 			Product product=new Product();
@@ -100,7 +106,7 @@ public class DbCollect {
 	}
 	
 	public int deleteCollectProduct(Product product) {
-		
+		open();
 		int flg=db.delete(TB_NAME, "twitter_id=?", new String[]{product.getTwitter_id()+""});
 		this.close();
 		return flg;
