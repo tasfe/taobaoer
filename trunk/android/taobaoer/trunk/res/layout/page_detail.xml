@@ -7,7 +7,7 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_above="@+id/user_home_bottom_layout"
-        android:background="@color/page_background_color"
+        android:background="@color/text_background_color"
         android:scrollbars="vertical" >
 
         <LinearLayout
@@ -24,18 +24,22 @@
 	            
                 <ImageView
                     android:id="@+id/goods_pic"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
                     android:background="@drawable/loading_big"
+                    android:scaleType="fitXY"
+                    android:clickable="true"
+                    android:adjustViewBounds="true"
                     android:contentDescription="@null" />
 				
-                <ImageButton
+                <ImageView
                     android:id="@+id/imageButton1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
                     android:layout_marginLeft="26dp"
                     android:layout_marginBottom="20dp"
+                    android:clickable="true"
                     android:contentDescription="@string/goods_share"
                     android:src="@drawable/share_selector_button" />
                 
@@ -50,8 +54,8 @@
                     android:alpha="0.4"
                     android:background="@color/price_bg_color"
                     android:textColor="@color/text_background_color"
-                    android:textSize="26sp"
-                    android:padding="2dp"
+                    android:textSize="22sp"
+                    android:padding="1dp"
                     android:text="@string/goods_price" />
                 
             </RelativeLayout>
@@ -63,8 +67,8 @@
                 android:background="@color/text_background_color"
                 android:text="@string/goods_description"
                 android:textColor="@color/text_color"
-                android:padding="5dp"
-                android:textSize="26sp" />
+                android:padding="10dp"
+                android:textSize="18sp" />
         </LinearLayout>
     </ScrollView>
 
