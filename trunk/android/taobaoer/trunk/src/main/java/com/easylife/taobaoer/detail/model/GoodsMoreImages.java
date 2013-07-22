@@ -3,12 +3,12 @@ package com.easylife.taobaoer.detail.model;
 import java.util.ArrayList;
 
 public class GoodsMoreImages {
-	public ArrayList<ImagesList> data;
+	public ArrayList<GoodsImageInfo> data;
 	public String message;
-	public ArrayList<ImagesList> getData() {
+	public ArrayList<GoodsImageInfo> getData() {
 		return data;
 	}
-	public void setData(ArrayList<ImagesList> data) {
+	public void setData(ArrayList<GoodsImageInfo> data) {
 		this.data = data;
 	}
 	public String getMessage() {
