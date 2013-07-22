@@ -1,6 +1,6 @@
 package com.easylife.taobaoer.detail.model;
 
-public class ImagesList {
+public class GoodsImageInfo {
 	public String pic_width;
 	public String pic_height;
 	public String pic_url;
