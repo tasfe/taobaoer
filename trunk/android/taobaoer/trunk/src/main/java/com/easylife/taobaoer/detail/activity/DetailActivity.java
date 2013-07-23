@@ -16,6 +16,9 @@ import android.app.ActivityGroup;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -35,6 +38,7 @@ public class DetailActivity extends ActivityGroup {
 	GoodsDetail goodsDetail;
 	private 	String twitter_goods_id;
 	private String twitter_id;
+	private List<Product> productList=new ArrayList<Product>();
 	
 	//author reash26 20130717
 	private Button favouriteButton; 
@@ -49,6 +53,17 @@ public class DetailActivity extends ActivityGroup {
 		favouriteButton=(Button) findViewById(R.id.favourite);
 		favouriteButton.setOnClickListener(new FavouriteButtonOnclick());
 		dbCollect=new DbCollect(this);
+	
+		//从doInBackground移至这里
+		Intent intent = DetailActivity.this.getIntent();
+		twitter_goods_id = intent.getStringExtra("twitter_goods_id");
+		twitter_id = intent.getStringExtra("twitter_id");
+		
+		//判断其商品是否为已收藏商品
+		productList=dbCollect.getCollectProduct(Long.parseLong(twitter_id));
+		if(productList.size()!=0)
+			favouriteButton.setBackgroundResource(R.drawable.fav_hover);
+		
 		
 		backButton = (Button) findViewById(R.id.back);
 		backButton.setOnClickListener(new OnClickListener() {
@@ -69,27 +84,19 @@ public class DetailActivity extends ActivityGroup {
 				goodsDetailService.showBigPostImage(DetailActivity.this, pic_url, picView,screenWidth);
 				remarkView.setText(goodsDetail.getData().getRemark());
 				priceView.setText("￥"+goodsDetail.getData().getGoods().getGoods_price());
+				product.setTitle("￥"+goodsDetail.getData().getGoods().getGoods_price());
 				
 				
 			}
 
 			@Override 
 			public String doInBackground() {
-				Intent intent = DetailActivity.this.getIntent();
-				twitter_goods_id = intent.getStringExtra("twitter_goods_id");
-				twitter_id = intent.getStringExtra("twitter_id");
-				Log.e("twitter_goods_id", twitter_goods_id);
-				
 				//author reash26 20130717
 				product.setTwitter_goods_id(Integer.parseInt(twitter_goods_id));
 				product.setTwitter_id(Integer.parseInt(twitter_id));
 				
-				
-				System.out.println(twitter_goods_id+"======="+twitter_id);
 				goodsDetail = goodsDetailService.getGoodsDetail(DetailActivity.this,twitter_goods_id,twitter_id);
 				product.setPic_url(goodsDetail.getData().getPic_url());
-				
-				
 				return null;
 			}
 		}, false).execute();
@@ -105,17 +112,12 @@ public class DetailActivity extends ActivityGroup {
 
 		@Override
 		public void onClick(View v) {
-			
-			List<Product> productList=new ArrayList<Product>();
-			
-			
-			Log.e("product.pic_url", product.getPic_url());
 			productList=dbCollect.getCollectProduct(product.getTwitter_id());
-			
 			if(productList.size()==0){
 				Long successflg=dbCollect.saveproductInfo(product);
 				if(successflg!=-1){
 					Toast.makeText(DetailActivity.this, "收藏成功", Toast.LENGTH_SHORT).show();
+					favouriteButton.setBackgroundResource(R.drawable.fav_hover);
 				}
 			}else{
 				AlertDialog alert = new AlertDialog.Builder(DetailActivity.this).setTitle("提示")
@@ -123,6 +125,7 @@ public class DetailActivity extends ActivityGroup {
 								@Override//处理确定按钮点击事件
 								public void onClick(DialogInterface dialog, int which) {
 									dbCollect.deleteCollectProduct(product);
+									favouriteButton.setBackgroundResource(R.drawable.favourite_selector_button);
 									}
 								})
 					                 .setNegativeButton("取消",new DialogInterface.OnClickListener() {//设置取消按钮
