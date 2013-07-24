@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/first_sell_bg"
+    >
+    <com.easylife.taobaoer.core.widget.waterfall.MultiColumnPullToRefreshListView
+        xmlns:pla="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/grandChildrenList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        pla:plaColumnNumber="3"
+        pla:plaLandscapeColumnNumber="3" 
+        android:layout_marginBottom="50dp"/>
+    
+    <RelativeLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:background="@color/black"
+        android:layout_alignParentBottom="true">
+        
+        <Button 
+            android:id="@+id/catChildrenBackButton"
+            android:layout_centerVertical="true"
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:background="@drawable/back_bg_button"
+            android:layout_marginLeft="23dp"
+            />
+        <TextView 
+            android:id="@+id/childrenType"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="@color/white"/>
+        
+    </RelativeLayout>
+</RelativeLayout>

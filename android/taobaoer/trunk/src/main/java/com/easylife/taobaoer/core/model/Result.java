@@ -2,6 +2,7 @@ package com.easylife.taobaoer.core.model;
 
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
+import com.easylife.taobaoer.category.model.CatProduct;
 import com.easylife.taobaoer.product.model.Product;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -44,6 +45,10 @@ public class Result<T> {
 	}
 
 	public static class ProductListResult extends Result<PageList<Product>> {
+	}
+	
+	public static class CatProductListResult extends Result<PageList<CatProduct>>{
+		
 	}
 
 }
