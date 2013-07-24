@@ -11,7 +11,6 @@ import android.widget.GridView;
 
 import com.easylife.taobaoer.R;
 import com.easylife.taobaoer.category.adapter.CategoryParentAdapter;
-import com.easylife.taobaoer.category.task.CommonData;
 
 public class CategoryActivity extends Activity {
 	
@@ -22,7 +21,8 @@ public class CategoryActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.page_category_parent);
 		gridView = (GridView) findViewById(R.id.catGridView);
-		CategoryParentAdapter  catAdapter = new CategoryParentAdapter(this,CommonData.getBaseData(this));
+		//CategoryParentAdapter  catAdapter = new CategoryParentAdapter(this,CommonData.getBaseData(this));
+		CategoryParentAdapter  catAdapter = new CategoryParentAdapter(this);
 		gridView.setAdapter(catAdapter);
 		gridView.setOnItemClickListener(new OnItemClickListener() {
 

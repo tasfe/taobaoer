@@ -44,7 +44,7 @@ public class LaunchActivity extends Activity {
 				app.setToken(token);
 				
 				List<CatParentInfo> list = null;
-				try {
+				/*try {
 					CatParentInfo shangyi = getCatType(CategoryEnum.SHANGYI.getTypeId(), 0, CategoryEnum.SHANGYI.getName());
 					CatParentInfo qunzi = getCatType(CategoryEnum.QUNZI.getTypeId(), 1, CategoryEnum.QUNZI.getName());
 					CatParentInfo kuzi = getCatType(CategoryEnum.KUZI.getTypeId(), 2, CategoryEnum.KUZI.getName());
@@ -63,18 +63,18 @@ public class LaunchActivity extends Activity {
 					
 				} catch (Exception e) {
 					Log.e("LaunchActivity.onPostExecute", e.toString());
-				}
+				}*/
 				
 				return list;
 			}
 
 			protected void onPostExecute(List<CatParentInfo> list) {
-				if (list != null && list.size() > 0) {
+				/*if (list != null && list.size() > 0) {
 					CommonData.writeBaseData(LaunchActivity.this, list);
 				}else{
 					SharedPreferencesManager sharedPreferencesManager = new SharedPreferencesManager(LaunchActivity.this);
 					sharedPreferencesManager.delete(CommonData.SHARED_PREFERNCES_BASEDATA);
-				}
+				}*/
 				
 				startActivity(new Intent(LaunchActivity.this,
 						MainTabActivity.class));
@@ -89,7 +89,7 @@ public class LaunchActivity extends Activity {
 		
 		CatParentInfo catParentInfo = null;
 		try{
-			CatDataList catList = categoryService.getCatProductList(LaunchActivity.this, 1, parentTypeId);
+			CatDataList catList = categoryService.getCatChildrenList(LaunchActivity.this, 1, parentTypeId);
 			
 			CatInfo info = null;
 			if(CategoryEnum.PEISHI.getName().equals(typeName)){

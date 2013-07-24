@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.easylife.taobaoer.R;
 import com.easylife.taobaoer.category.adapter.CategoryChildrenAdapter;
 import com.easylife.taobaoer.category.model.CatDataList;
+import com.easylife.taobaoer.category.model.CatInfo;
 import com.easylife.taobaoer.category.model.CategoryEnum;
 import com.easylife.taobaoer.category.service.impl.CategoryServiceImpl;
 import com.easylife.taobaoer.core.task.ProgressTask;
@@ -66,7 +67,28 @@ public class CategoryChildrenActivity extends Activity {
 					@Override
 					public void onItemClick(AdapterView<?> arg0, View arg1,
 							int position, long arg3) {
-						// TODO Auto-generated method stub
+
+						CatInfo catInfo = null;
+						if (CategoryEnum.PEISHI.getId() == catEnum.getId()) {
+							catInfo = catDataList.getData().get(1)
+									.getChildren().get(position).getInfo();
+						} else {
+							catInfo = catDataList.getData().get(0)
+									.getChildren().get(position).getInfo();
+						}
+						if (catInfo != null) {
+
+							Intent intent = new Intent();
+							intent.putExtra("children_tpye_id", catInfo.getNid());
+							intent.putExtra("children_tpye_name",
+									catInfo.getWord_name());
+							intent.putExtra("children_tpye_method", catInfo.getUrl());
+							
+							intent.setClass(CategoryChildrenActivity.this,
+									CategoryGrandchildrenActivity.class);
+							CategoryChildrenActivity.this.startActivity(intent);
+
+						}
 
 					}
 				});
@@ -76,7 +98,7 @@ public class CategoryChildrenActivity extends Activity {
 			@Override
 			public String doInBackground() {
 
-				catDataList = categoryService.getCatProductList(
+				catDataList = categoryService.getCatChildrenList(
 						CategoryChildrenActivity.this, 1, catEnum.getTypeId());
 				return null;
 			}

@@ -52,11 +52,11 @@ public class CategoryChildrenAdapter extends PageAdapter<CatChildren> {
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 
-		CatInfo catInof = null;
+		CatInfo catInfo = null;
 		if(CategoryEnum.PEISHI.getId() == catEnum.getId()){
-			catInof = catDataList.getData().get(1).getChildren().get(position).getInfo();
+			catInfo = catDataList.getData().get(1).getChildren().get(position).getInfo();
 		}else{
-			catInof = catDataList.getData().get(0).getChildren().get(position).getInfo();
+			catInfo = catDataList.getData().get(0).getChildren().get(position).getInfo();
 		}
 
 		ViewHolder holder;
@@ -75,9 +75,9 @@ public class CategoryChildrenAdapter extends PageAdapter<CatChildren> {
 		final ImageView itemImage = holder.itemImage;
 		itemImage.setImageBitmap(null);
 		TextView itemContent = holder.itemContent;
-		if (StringUtils.hasText(catInof.getPic())) {
+		if (StringUtils.hasText(catInfo.getPic())) {
 			ImageViewLoader nid = ImageViewLoader.getInstance(mContext);
-			nid.fetchImage(catInof.getPic(), R.drawable.loading_small, itemImage,
+			nid.fetchImage(catInfo.getPic(), R.drawable.loading_small, itemImage,
 					new ImageLoaderCallback() {
 						@Override
 						public void imageLoaderFinish(Bitmap bitmap) {
@@ -96,7 +96,7 @@ public class CategoryChildrenAdapter extends PageAdapter<CatChildren> {
 						}
 					});
 		}
-		itemContent.setText(catInof.getWord_name());
+		itemContent.setText(catInfo.getWord_name());
 		return convertView;
 	}
 
