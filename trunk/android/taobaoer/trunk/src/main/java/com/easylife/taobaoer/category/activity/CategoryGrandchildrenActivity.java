@@ -12,12 +12,14 @@ import android.widget.AbsListView.OnScrollListener;
 
 import com.easylife.taobaoer.R;
 import com.easylife.taobaoer.category.adapter.CategoryGrandChildrenAdapter;
+import com.easylife.taobaoer.category.model.CatProduct;
 import com.easylife.taobaoer.category.task.CatProductListGetDataTask;
 import com.easylife.taobaoer.core.widget.waterfall.MultiColumnListView.OnLoadMoreListener;
 import com.easylife.taobaoer.core.widget.waterfall.MultiColumnPullToRefreshListView;
 import com.easylife.taobaoer.core.widget.waterfall.MultiColumnPullToRefreshListView.OnRefreshListener;
 import com.easylife.taobaoer.core.widget.waterfall.internal.PLA_AdapterView;
 import com.easylife.taobaoer.core.widget.waterfall.internal.PLA_AdapterView.OnItemClickListener;
+import com.easylife.taobaoer.detail.activity.DetailActivity;
 
 public class CategoryGrandchildrenActivity extends Activity{
 
@@ -59,7 +61,13 @@ public class CategoryGrandchildrenActivity extends Activity{
 			@Override
 			public void onItemClick(PLA_AdapterView<?> parent, View view,
 					int position, long id) {
-				// TODO Auto-generated method stub
+				CatProduct catProduct = (CatProduct) mAdapter.getItem(position);
+				
+				Intent intent = new Intent();
+				intent.putExtra("twitter_goods_id", catProduct.getTwitter_goods_id());
+				intent.putExtra("twitter_id", catProduct.getTwitter_id());
+				intent.setClass(CategoryGrandchildrenActivity.this, DetailActivity.class);
+				CategoryGrandchildrenActivity.this.startActivity(intent);
 				
 			}
 		});
