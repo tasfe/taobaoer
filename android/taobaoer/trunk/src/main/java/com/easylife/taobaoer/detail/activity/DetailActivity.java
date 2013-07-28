@@ -10,6 +10,11 @@ import com.easylife.taobaoer.core.utils.DbCollect;
 import com.easylife.taobaoer.detail.model.GoodsDetail;
 import com.easylife.taobaoer.detail.service.IGoodsDetailService;
 import com.easylife.taobaoer.detail.service.imp.GoodsDetailService;
+import com.easylife.taobaoer.home.activity.CategoryActivity;
+import com.easylife.taobaoer.home.activity.FavActivity;
+import com.easylife.taobaoer.home.activity.IndexActivity;
+import com.easylife.taobaoer.home.activity.NewIndexActivity;
+import com.easylife.taobaoer.main.activity.LaunchActivity;
 import com.easylife.taobaoer.product.model.Product;
 
 import android.app.ActivityGroup;
@@ -35,8 +40,8 @@ public class DetailActivity extends ActivityGroup {
 	private TextView remarkView;
 	private Button backButton;
 	private DbCollect dbCollect;
-	GoodsDetail goodsDetail;
-	private 	String twitter_goods_id;
+	private GoodsDetail goodsDetail;
+	private String twitter_goods_id;
 	private String twitter_id;
 	private List<Product> productList=new ArrayList<Product>();
 	
@@ -66,12 +71,24 @@ public class DetailActivity extends ActivityGroup {
 		
 		
 		backButton = (Button) findViewById(R.id.back);
+		ImageView imagesView = (ImageView) findViewById(R.id.goods_pic);
+		imagesView.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent();
+				intent.putExtra("twitter_goods_id", twitter_goods_id);
+				intent.putExtra("twitter_id",twitter_id);
+				intent.setClass(DetailActivity.this,MultigraphActivity.class);
+				DetailActivity.this.startActivity(intent);
+			}
+		});
 		backButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				finish();
 			}
 		});
+		
 		new ProgressTask(DetailActivity.this, new TaskCallback(){
 			@Override
 			public void successCallback() {
