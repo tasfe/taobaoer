@@ -3,15 +3,14 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
 
-    <ListView
-        android:id="@+id/MoreImages"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <ImageView
+        android:id="@+id/goods_pic"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         android:adjustViewBounds="true"
         android:background="@drawable/loading_big"
         android:clickable="true"
         android:contentDescription="@null"
-        android:scaleType="fitXY" >
-    </ListView>
+        android:scaleType="fitXY" />
 
 </RelativeLayout>
