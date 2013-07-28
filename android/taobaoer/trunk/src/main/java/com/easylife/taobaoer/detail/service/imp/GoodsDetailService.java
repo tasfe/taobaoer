@@ -82,7 +82,7 @@ public class GoodsDetailService implements IGoodsDetailService {
 	}
 
 	@Override
-	public GoodsMoreImages showGoodsMorePictures(Context context, String twitter_goods_id,
+	public GoodsMoreImages getGoodsMorePictures(Context context, String twitter_goods_id,
 			String twitter_id) {
 		ApplicationContext config = (ApplicationContext) context
 				.getApplicationContext();

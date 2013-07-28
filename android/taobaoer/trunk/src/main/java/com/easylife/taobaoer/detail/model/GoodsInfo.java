@@ -9,6 +9,7 @@ public class GoodsInfo {
 	public String  remark;
 	public String  pic_url;
 	public String  pic_width;
+	public String  pic_height;
 	public String  twitter_id;
 
 	public Goods getGoods() {
@@ -34,6 +35,13 @@ public class GoodsInfo {
 	}
 	public void setPic_width(String pic_width) {
 		this.pic_width = pic_width;
+	}
+	
+	public String getPic_height() {
+		return pic_height;
+	}
+	public void setPic_height(String pic_height) {
+		this.pic_height = pic_height;
 	}
 	public String getTwitter_id() {
 		return twitter_id;

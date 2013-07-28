@@ -26,5 +26,5 @@ public interface IGoodsDetailService {
 	public void showBigPostImage(final Context context, String pic_url,
 			final ImageView imageView,final int screenWidth);
 	
-	public GoodsMoreImages showGoodsMorePictures(Context context,String twitter_goods_id,String twitter_id);
+	public GoodsMoreImages getGoodsMorePictures(Context context,String twitter_goods_id,String twitter_id);
 }
