@@ -22,6 +22,7 @@ import com.easylife.taobaoer.core.model.Code;
 import com.easylife.taobaoer.core.model.Token;
 import com.easylife.taobaoer.core.service.ITaobaoService;
 import com.easylife.taobaoer.core.service.impl.TaobaoService;
+import com.easylife.taobaoer.core.widget.image.ImageViewLoader;
 
 public class LaunchActivity extends Activity {
 	ITaobaoService taobaoService = new TaobaoService();
@@ -64,6 +65,8 @@ public class LaunchActivity extends Activity {
 				} catch (Exception e) {
 					Log.e("LaunchActivity.onPostExecute", e.toString());
 				}*/
+				
+				ImageViewLoader.getInstance(LaunchActivity.this).clearCache();
 				
 				return list;
 			}
