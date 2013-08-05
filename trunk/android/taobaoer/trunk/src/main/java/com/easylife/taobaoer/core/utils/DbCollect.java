@@ -53,7 +53,6 @@ public class DbCollect {
          values.put("pic_height", product.getPic_height());
          open();
          Long uid=db.insert(TB_NAME,null, values);
-         //"twitter_id,title,twitter_goods_id,pic_url,j_pic_url,q_pic_url,pic_width,pic_height"
          this.close();
          return uid;
 	}
@@ -85,10 +84,22 @@ public class DbCollect {
 	 * 获得收藏的所有商品
 	 * @return
 	 */
-	public List<Product> getAllCollectProduct(){
-		List<Product> allProductList=new ArrayList<Product>();
+	public int getPageNumProduct(){
 		open();
 		cursor=db.query(TB_NAME, null, null, null, null, null, null);
+		int number=cursor.getCount();
+		number=number%20==0?number/20:number/20+1;
+		this.close();
+		return number;
+	}
+	
+	
+	public List<Product> pageSelectproduct(int page){
+		List<Product> pageProductList=new ArrayList<Product>();
+		open();
+		cursor=db.rawQuery("select * from "+TB_NAME+" order by twitter_id desc limit 20*("+page+"-1),"+page+"*20", null);
+		
+		
 		while(cursor.moveToNext()){
 			Product product=new Product();
 			product.setTwitter_id(cursor.getInt(0));
@@ -99,10 +110,10 @@ public class DbCollect {
 			product.setQ_pic_url(cursor.getString(5));
 			product.setPic_width(cursor.getInt(6));
 			product.setPic_height(cursor.getInt(7));
-			allProductList.add(product);
+			pageProductList.add(product);
 		}
 		this.close();
-		return allProductList;
+		return pageProductList;
 	}
 	
 	public int deleteCollectProduct(Product product) {
