@@ -10,22 +10,13 @@ import com.easylife.taobaoer.core.utils.DbCollect;
 import com.easylife.taobaoer.detail.model.GoodsDetail;
 import com.easylife.taobaoer.detail.service.IGoodsDetailService;
 import com.easylife.taobaoer.detail.service.imp.GoodsDetailService;
-import com.easylife.taobaoer.home.activity.CategoryActivity;
-import com.easylife.taobaoer.home.activity.FavActivity;
-import com.easylife.taobaoer.home.activity.IndexActivity;
-import com.easylife.taobaoer.home.activity.NewIndexActivity;
-import com.easylife.taobaoer.main.activity.LaunchActivity;
 import com.easylife.taobaoer.product.model.Product;
 
 import android.app.ActivityGroup;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -102,6 +93,8 @@ public class DetailActivity extends ActivityGroup {
 				remarkView.setText(goodsDetail.getData().getRemark());
 				priceView.setText("￥"+goodsDetail.getData().getGoods().getGoods_price());
 				product.setTitle("￥"+goodsDetail.getData().getGoods().getGoods_price());
+				product.setPic_height(Integer.parseInt(goodsDetail.getData().getPic_height()));
+				product.setPic_width(Integer.parseInt(goodsDetail.getData().getPic_width()));
 				
 				
 			}
