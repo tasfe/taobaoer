@@ -2,17 +2,10 @@ package com.easylife.taobaoer.detail.adapter;
 
 import java.util.Vector;
 
-import org.springframework.util.StringUtils;
-
 import com.easylife.taobaoer.R;
-import com.easylife.taobaoer.core.utils.ImageUtils;
-import com.easylife.taobaoer.core.widget.image.ImageLoaderCallback;
-import com.easylife.taobaoer.core.widget.image.ImageViewLoader;
 import com.easylife.taobaoer.detail.model.GoodsImageInfo;
-import com.easylife.taobaoer.detail.model.GoodsMoreImages;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,26 +17,40 @@ public class ImagesItemAdapter extends BaseAdapter {
 	private Context mContext;
 	private ListView mListView;
 	private LayoutInflater mInflater;
-	private GoodsMoreImages goodsMoreImages;
-	public ImagesItemAdapter(Context context,ListView listView,GoodsMoreImages moreImages) {
+	private Vector<GoodsImageInfo> mModels = new Vector<GoodsImageInfo>();
+	SyncImageLoader syncImageLoader;
+	public ImagesItemAdapter(Context context,ListView listView) {
+		syncImageLoader = new SyncImageLoader(context);
+		syncImageLoader.clearCache();
 		mInflater = LayoutInflater.from(context);
 		mContext = context;
 		mListView = listView;
-		goodsMoreImages = moreImages; 
 	}
 	
+	public void addImageInfo(GoodsImageInfo imageInfo){
+		mModels.add(imageInfo);
+	}
+	
+	public SyncImageLoader getImageLoader(){
+		return syncImageLoader;
+	}
+	
+	public void clean(){
+		mModels.clear();
+	}
+
 	@Override
 	public int getCount() {
-		if(goodsMoreImages==null||goodsMoreImages.getData()==null){
-			return 0;
-		}
-		return goodsMoreImages.getData().size();
+		// TODO Auto-generated method stub
+		return mModels.size();
 	}
 
 	@Override
 	public Object getItem(int position) {
-		// TODO Auto-generated method stub
-		return null;
+		if(position >= getCount()){
+			return null;
+		}
+		return mModels.get(position);
 	}
 
 	@Override
@@ -51,48 +58,19 @@ public class ImagesItemAdapter extends BaseAdapter {
 		// TODO Auto-generated method stub
 		return position;
 	}
-
-	@Override
-	public View getView(int position, View imageView, ViewGroup parent) {
-		GoodsImageInfo goodsImageInfo = goodsMoreImages.getData().get(position);
-		String pic_url = goodsImageInfo.getPic_url();
-		System.out.println("============="+pic_url); 
-		ViewHolder holder = null;
-		if (imageView == null) {
-			imageView = mInflater.inflate(R.layout.item_image, null);
-		    holder = new ViewHolder();
-			holder.itemImage = (ImageView) imageView
-					.findViewById(R.id.goods_pic);
-			imageView.setTag(holder);
-		} else {
-			holder = (ViewHolder) imageView.getTag();
-		}
-		
-		final ImageView itemImage = holder.itemImage;
-		System.out.println("=========================="+itemImage.getId());
-		if (StringUtils.hasText(pic_url)) {
-			imageView.setVisibility(View.VISIBLE);
-			ImageViewLoader nid = ImageViewLoader.getInstance(mContext);
-			nid.fetchImage(pic_url,
-					R.drawable.loading_big, itemImage,
-					new ImageLoaderCallback() {
-						@Override
-						public void imageLoaderFinish(Bitmap bitmap) {
-							if (bitmap != null) {
-								itemImage.setImageBitmap( ImageUtils
-										.zoomWidthBitmapNotCut(bitmap,0, 0,
-												mContext));
-							}
-						}
-					});
-		} else {
-			imageView.setVisibility(View.GONE);
-		}
-		return imageView;
-	}
 	
-
-	private class ViewHolder {
-		public ImageView itemImage;
+	@Override
+	public View getView(int position, View convertView, ViewGroup parent) {
+	    View view=convertView;  
+        if(convertView==null) {
+        	view = mInflater.inflate(R.layout.item_image, null);  
+        }
+		
+		GoodsImageInfo goodsImageInfo =mModels.get(position);
+		//view.setTag(position);
+		ImageView imageView = (ImageView) view.findViewById(R.id.goods_pic);
+		//vi.setBackgroundResource(R.drawable.loading_big);
+		syncImageLoader.DisplayImage(goodsImageInfo.getPic_url(), imageView);  
+		return  view;
 	}
 }
