@@ -5,13 +5,13 @@
 
     <ListView
         android:id="@+id/MoreImages"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:background="@drawable/loading_big"
-        android:clickable="true"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/text_background_color"
         android:contentDescription="@null"
-        android:scaleType="fitXY" >
+        android:dividerHeight="0dp"
+        android:divider="#FFCC00"
+        >
     </ListView>
 
 </RelativeLayout>
