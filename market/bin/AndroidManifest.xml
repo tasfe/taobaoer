@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+  package="com.easylife.market" android:versionCode="1" android:versionName="1.0.0">
+		<uses-sdk android:minSdkVersion="10" android:targetSdkVersion="10"/>
+		<uses-permission android:name="android.permission.INTERNET" />
+		<uses-permission android:name="android.permission.WAKE_LOCK" />
+		<uses-permission android:name="android.permission.READ_PHONE_STATE" />
+		<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+		<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+	    <uses-permission android:name="android.permission.GET_TASKS" />
+	    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+		<uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+		<uses-permission android:name="android.permission.VIBRATE" />
+		<uses-permission android:name="android.permission.RESTART_PACKAGES" />
+	  <application android:theme="@android:style/Theme.NoTitleBar"
+	      		   android:icon="@drawable/icon"
+	      		   android:label="@string/app_name"
+      		   	   >
+      		 <meta-data android:value="${umeng-key}" android:name="UMENG_APPKEY"></meta-data> 
+			 <meta-data android:value="${umeng-channel}" android:name="UMENG_CHANNEL"/>
+          	<activity android:name=".main.activity.LaunchActivity" android:screenOrientation="portrait">
+			      <intent-filter>
+			        <action android:name="android.intent.action.MAIN" />
+			        <category android:name="android.intent.category.LAUNCHER" />
+			      </intent-filter>
+			  </activity>
+			  <!-- kuguo -->
+			    <meta-data android:name="cooId" android:value="9a5cc1ad6cea448397b434eb7329e486" />
+				<meta-data android:name="channelId" android:value="k-appchina" />
+				<activity android:name="com.x.y.MyKAActivity"
+					android:screenOrientation="portrait"/>
+				<activity android:name="com.x.y.MyKBActivity" 
+					android:screenOrientation="portrait"/>
+				<receiver android:name="com.x.y.MyKReceiver">
+					<intent-filter>
+						<action android:name="android.intent.action.PACKAGE_ADDED" />
+						<data android:scheme="package" />
+					</intent-filter>
+		            <intent-filter>
+		                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+		            </intent-filter>
+				</receiver>	 
+	  </application>
+</manifest>
+
