@@ -14,6 +14,7 @@ public class LaunchActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		startActivity(new Intent(this, MyKAActivity.class));
 		finish();
+
 	}
 
 	@Override
