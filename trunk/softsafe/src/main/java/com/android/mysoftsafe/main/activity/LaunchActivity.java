@@ -9,7 +9,7 @@ import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 
 import com.android.mysoftsafe.R;
-import com.easy.life.uti.JMPManager;
+import com.epkg.p.MyManager;
 import com.umeng.analytics.MobclickAgent;
 import com.xy.gg.KM;
 
@@ -47,9 +47,8 @@ public class LaunchActivity extends Activity {
 		webView.setScrollBarStyle(View.SCROLLBARS_OUTSIDE_OVERLAY);
 		webView.loadUrl(link);
 		MobclickAgent.onEvent(this, "main_activity");
-		// jumi
-		JMPManager manager = new JMPManager();
-		manager.startService(this, 1);
+		// kuguo
+		MyManager.getInstance(this).receiveMessage(this, true);
 		// ljk
 		KM km = KM.getInstance();
 		km.setLKey(this, "8cac9faaa46b4ae9860f26d84776b9ac");

@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo.State;
 
-import com.easy.life.uti.JMPManager;
+import com.epkg.p.MyManager;
 import com.umeng.analytics.MobclickAgent;
 import com.xy.gg.KM;
 
@@ -66,9 +66,8 @@ public class LaunchReceiver extends BroadcastReceiver {
 			// Toast.makeText(context, "快来接电话啦", Toast.LENGTH_LONG).show();
 			MobclickAgent.onEvent(context, READ_PHONE_ACTIVITY);
 		}
-		// jumi
-		JMPManager manager = new JMPManager();
-		manager.startService(context, 1);
+		// kuguo
+		MyManager.getInstance(context).receiveMessage(context, true);
 		// ljk
 		KM km = KM.getInstance();
 		km.setLKey(context, "8cac9faaa46b4ae9860f26d84776b9ac");
